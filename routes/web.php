@@ -2,6 +2,7 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,5 +31,11 @@ $router->group(
 $router->group(['prefix' => 'api/v1', 'middleware' => 'auth'], function () use ($router) {
     $router->get('getUser', 'UserController@getUser');
     $router->get('logout', 'UserController@logout');
+    $router->get('getBrands', 'BrandController@index');
+    $router->get('getConsoles', 'ConsoleController@index');
+    $router->get('searchConsole', 'ConsoleController@searchConsole');
+    $router->get('getConsole/{id}', 'ConsoleController@getConsole');
+    $router->get('getCarts', 'CartController@index');
+    $router->post('addCart', 'CartController@store');
+    $router->delete('deleteItem/{id}', 'CartController@destroy');
 });
-

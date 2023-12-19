@@ -38,6 +38,7 @@ class UserController extends Controller
             $user->email = $request->email;
             // $user->password = app('hash')->make($request->password);
             $user->password = app('hash')->make($request->password);
+            $user->image = 'https://ui-avatars.com/api/?name=' . $request->username;
             $user->save();
 
             return response()->json([
